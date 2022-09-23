@@ -1,5 +1,0 @@
-<odoo>
-      <record id="admin_approval_id" model="res.groups">
-        <field name="name">Normal User Approval</field>
-    </record>
-</odoo>
