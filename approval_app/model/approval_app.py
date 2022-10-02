@@ -36,6 +36,22 @@ class ApprovalApp(models.Model):
     stage_id=fields.Many2one('approval.stage')
 
 
+    @api.onchange('contact')
+    def _onchange_contact(self):
+        if self.contact:
+            self.office_phone=self.contact.phone
+            self.email=self.contact.email
+            if self.contact.street:
+                street=self.contact.street
+            else:
+                street=''
+            if self.contact.street2:
+                street2 = self.contact.street2
+            else:
+                street2 = ''
+            self.address=street + street2
+
+
 
 class GroupMember(models.Model):
     _name='group.member'
